@@ -1,0 +1,23 @@
+main.messages{
+    @include background-color;
+    max-height: 80vh;
+    color :map-get($map: $colors, $key: messenger-color);
+
+    .chat-container {
+        overflow-y: scroll;
+        height: 80vh;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .chat-message {
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+        &.chatbot {
+            @include chat-bot;
+        }
+        &.user{
+            @include me-box;
+        }
+    }
+}

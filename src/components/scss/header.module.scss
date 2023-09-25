@@ -1,0 +1,29 @@
+header.wrapper{
+    @include background-color;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom: 1px solid map-get($map: $colors, $key: border-color);
+    padding:1rem;
+   
+    .col-8{
+        text-align: left;
+        align-items: center;
+        img {
+            border-radius: 50%;
+            align-self: center;
+        }
+    }
+    .col-1{
+        padding: 1rem 0;
+        span{
+            padding:1rem
+        }
+        &:hover{
+             span{
+                cursor: pointer;
+                background-color: #ffffff20;
+                border-radius: 50%;
+             }
+        }
+    }
+}
