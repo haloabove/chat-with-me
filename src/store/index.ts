@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-import conversation from './conversation'
+import conversations from './conversations.ts'
 
 export const store = configureStore({
     reducer: {
-        conversation
+        conversations
     },
 })

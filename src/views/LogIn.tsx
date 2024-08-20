@@ -1,11 +1,13 @@
 
-import { useHistory } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function LogIn() {
-    const history = useHistory();
+    const navigate = useNavigate();
 
-    function handleClick() {
-        history.push("/Home");
+    function handleClick(event) {
+        event.preventDefault(); // Prevents form submission
+        navigate("/Home");
     }
 
     return (

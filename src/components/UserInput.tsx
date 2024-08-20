@@ -1,40 +1,50 @@
+import React from "react";
 import { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux/es/hooks/useSelector";
+import { ConversationState, AppDispatch } from '../models/index.ts';
 
-import { fetchMessageFromOpenAI, addUserInput, addMessage } from "../store/conversation";
-import Loading from "./Loading";
+import { fetchMessageFromOpenAI, addUserInput, addMessage } from "../store/conversations.ts";
+import Loading from "./Loading.tsx";
+
 
 function UserInput() {
-    const dispatch = useDispatch();
-
+    const dispatch = useDispatch<AppDispatch>();
+    
     const [input, setInput] = useState('');
-
-    const inputRef = useRef();
-
-    const loadingState = useSelector((state) => state.conversation.loading);
-
+    
+    const loadingState = useSelector((state:ConversationState ) => state.loading);
+    
+    const inputRef = useRef<HTMLInputElement | null>(null);
+    
     const handleUserInput = (e) => {
         e.preventDefault();
+        
         dispatch(addUserInput(input));
+        
         dispatch(addMessage({ client: 'Me', message: input }));
+        
         dispatch(fetchMessageFromOpenAI());
+        
         setInput('');
-        inputRef.current.value = '';
+
+        if (inputRef.current) {
+            inputRef.current.value = '';
+        }
     };
 
     const isButtonDisabled = input.trim() === '' && loadingState;
 
     return (
-        <div className="row user-input">
-            <form method="post" onSubmit={handleUserInput}>
+        <div className="row user-input min-vh-20">
+            <form method="post" onSubmit={ handleUserInput }>
                 <div className="row">
                     <div className="col col-11">
                         <input
                             type="text"
                             placeholder="Type your message..."
                             name="userInput"
-                            onInput={(e) => setInput(e.target.value)}
+                            onInput={(e) => setInput((e.target as HTMLInputElement).value)}
                             ref={inputRef}
                             disabled={isButtonDisabled}
                         />

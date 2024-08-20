@@ -1,6 +1,6 @@
 
 import OpenAI from 'openai';
-import { fromDomainResponse } from './from-domain.js'
+import { fromDomainResponse } from './from-domain.ts'
 
 const successHandler = (response) => fromDomainResponse(response);
 const errorHandler = (error) => {
