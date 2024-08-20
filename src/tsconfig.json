@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
     },
-    "include": ["src", "images.d.ts"]
+    "include": ["src", "images.d.ts"],
+    "allowJs" : true,
   }

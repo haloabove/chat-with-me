@@ -5,7 +5,6 @@ import { RootState } from "../models";
 function Messages() {
     const messagesContainerRef = useRef<HTMLDivElement>(null);
     const msgByMsg = useSelector((state: RootState) => state.conversations);
-    console.log(msgByMsg);
   
     const response = msgByMsg.messages.map((item, key) => {
       const clientClassName = item.client === 'Me' ? 'chat-message user' : 'chat-message chatbot';

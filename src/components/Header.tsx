@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import meImage from '../assets/me.jpg';
 
 function Header() {
     return (
         <header className="row text-center wrapper d-flex">
             <div className="col col-8 d-flex">
-                <img src="../../src/assets/me.jpg" alt="Me" />
+                <img src= { meImage } alt="Me" />
             </div>
             <div className="col col-1">
                 <span>
